@@ -4,6 +4,7 @@ if /I %1 == controller goto :create-c
 if /I %1 == middleware goto :create-mid
 if /I %1 == migration-new goto :migration-new
 if /I %1 == migrate goto :migrate
+if /I %1 == migrate-rf goto :migrate-rf
 
 :load-server
 C:\OSPanel\modules\php\PHP_8.0\php.exe artisan serve
@@ -21,6 +22,10 @@ goto :eof
 
 :migrate
 C:\OSPanel\modules\php\PHP_8.0\php.exe artisan migrate
+goto :eof
+
+:migrate-rf
+C:\OSPanel\modules\php\PHP_8.0\php.exe artisan migrate:refresh
 goto :eof
 
 :migration-new

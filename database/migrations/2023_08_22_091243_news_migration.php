@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->string('title');
             $table->multiLineString('description');
             $table->string('photo');

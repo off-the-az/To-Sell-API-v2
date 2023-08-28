@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('attributesValue', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->unsignedBigInteger('attributeId');
             $table->foreign('attributeId')->references('id')->on('attributes');
             $table->string('value');

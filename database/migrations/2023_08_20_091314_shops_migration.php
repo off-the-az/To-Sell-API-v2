@@ -13,7 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('shops', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('ownerId');
+            $table->foreign('ownerId')->references('id')->on('users');
+        });
     }
 
     /**

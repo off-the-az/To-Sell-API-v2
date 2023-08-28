@@ -2,32 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Users;
 
 class UsersController extends Controller
 {
-    public function getAll(Request $request)
+    public function getAll()
     {
-        return 'Get All Users';
+        return Users::all();
     }
-    public function getById(Request $request, string $id)
+    public function getById(string $id)
     {
-        return $id;
+        return Users::findOrFail($id)->firstOrFail();
     }
-    public function getByToken(Request $request, string $token)
+    public function getByToken(string $token)
     {
-        return $token;
+        return Users::where('token', '=', '%'.$token.'%')->firstOrFail();
     }
-    public function add(Request $request)
+    public function update()
     {
-        return 'User`s info added';
+        return null;
     }
-    public function update(Request $request)
+    public function delete()
     {
-        return 'User`s info updated';
-    }
-    public function delete(Request $request)
-    {
-        return 'User`s info deleted';
+        return null;
     }
 }

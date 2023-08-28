@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shops', function (Blueprint $table) {
-            $table->integer('id')->primary();
-            $table->string('name');
-            $table->unsignedBigInteger('ownerId');
-            $table->foreign('ownerId')->references('id')->on('users');
+        Schema::create('tickets', function (Blueprint $table) {
+            $table->id();
+            $table->string('address');
+            $table->integer('totalSum');
+            $table->unsignedBigInteger('userId');
+            $table->foreign('userId')->references('id')->on('users');
+            $table->unsignedBigInteger('orderStatus');
+            $table->foreign('orderStatus')->references('id')->on('ordersStatus');
+            $table->timestamp('date')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

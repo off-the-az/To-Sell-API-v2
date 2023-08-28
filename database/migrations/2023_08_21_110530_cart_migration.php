@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cart', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->integer('amount');
             $table->unsignedBigInteger('productId');
             $table->foreign('productId')->references('id')->on('products');

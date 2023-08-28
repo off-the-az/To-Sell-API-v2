@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('usersRole', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+        });
     }
 
     /**

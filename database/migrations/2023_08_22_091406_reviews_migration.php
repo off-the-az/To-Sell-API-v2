@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->integer('id')->primary();
-            $table->string('name');
-            $table->multiLineString('description');
-            $table->integer('priceNew');
-            $table->integer('priceOld');
-            $table->unsignedBigInteger('categoryId');
-            $table->foreign('categoryId')->references('id')->on('categories');
-            $table->unsignedBigInteger('shopId');
-            $table->foreign('shopId')->references('id')->on('shops');
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('productId');
+            $table->foreign('productId')->references('id')->on('products');
+            $table->unsignedBigInteger('userId');
+            $table->foreign('userId')->references('id')->on('users');
+            $table->tinyInteger('stars');
+            $table->string('comment');
+            $table->timestamp('date')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
